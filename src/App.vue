@@ -58,7 +58,7 @@ p {
 .wrapper {
   margin: 0 auto;
   padding: 0 15px;
-  width: 425px;
+  max-width: 425px;
 }
 
 .text-center {

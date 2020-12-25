@@ -41,7 +41,10 @@ export default {
       return this.$vnode.key;
     },
     removeTransaction: function (index) {
-      this.$store.dispatch('removeTransaction', index);
+      this.$store.dispatch('showModal')
+          .then(() => {
+            return this.$store.dispatch('removeTransaction', index)})
+      // this.$store.dispatch('removeTransaction', index);
     }
   }
 }

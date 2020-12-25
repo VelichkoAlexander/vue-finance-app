@@ -6,6 +6,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         isTypeCredit: false,
+        transactionModal: false,
+        transactionModalResolve: null,
         transactions: [
             {type: 'debit', description: 'Vue Class', amount: 4500},
             {type: 'credit', description: 'Payroll', amount: 100000},
@@ -16,6 +18,7 @@ const store = new Vuex.Store({
         getTotal: (state) => state.transactions.reduce((acc, current) => {
             return acc + current.amount;
         }, 0),
+        getTransactionsModalState: (state) => state.transactionModal,
     },
     mutations: {
         toggleTypeOfTransaction: (state) => state.isTypeCredit = !state.isTypeCredit,
@@ -25,6 +28,15 @@ const store = new Vuex.Store({
                 type: state.isTypeCredit ? 'credit' : 'debit',
             }),
         removeTransaction: (state, transactionIndex) => state.transactions.splice(transactionIndex, 1),
+        hideTransactionModal: (state) => {
+            state.transactionModalResolve = null;
+            state.transactionModal = false;
+        },
+        showTransactionModal: (state, payload) => {
+            state.transactionModalResolve = payload.resolve;
+            state.transactionModal = true;
+        },
+        resolveModal: (state) => state.transactionModalResolve(),
     },
     actions: {
         toggleTypeOfTransaction({commit}) {
@@ -35,6 +47,19 @@ const store = new Vuex.Store({
         },
         removeTransaction({commit}, transactionIndex) {
             commit('removeTransaction', transactionIndex);
+        },
+        removeTransactionModal({commit}) {
+            commit('hideTransactionModal');
+        },
+        showModal({commit}) {
+            return new Promise((resolve) => {
+                console.log(resolve)
+                commit('showTransactionModal', {resolve});
+            })
+        },
+        resolveModal: function (context) {
+            context.commit('resolveModal');
+            context.commit('hideTransactionModal');
         }
     },
 });
