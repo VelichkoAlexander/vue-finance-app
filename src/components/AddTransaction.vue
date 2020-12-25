@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-on:keyup.enter="addTransaction">
     <template v-if="errors">
       <ul class="errors-list">
         <li v-for="error in errors" :key="error">- {{ error }}</li>

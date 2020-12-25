@@ -16,7 +16,10 @@ const store = new Vuex.Store({
     getters: {
         getTransactions: (state) => state.transactions,
         getTotal: (state) => state.transactions.reduce((acc, current) => {
-            return acc + current.amount;
+            if('debit' === current.type) {
+                return acc + current.amount;
+            }
+            return acc - current.amount;
         }, 0),
         getTransactionsModalState: (state) => state.transactionModal,
     },
