@@ -17,7 +17,7 @@ const store = new Vuex.Store({
     mutations: {
         toggleTypeOfTransaction: (state) => state.isTypeCredit = !state.isTypeCredit,
         addTransaction: (state, transaction) =>
-            state.transactions.push({
+            state.transactions.unshift({
                 ...transaction,
                 type: state.isTypeCredit ? 'credit' : 'debit',
             }),

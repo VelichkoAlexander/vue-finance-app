@@ -1,5 +1,10 @@
 <template>
   <div class="wrapper">
+    <template v-if="errors">
+      <ul class="errors-list">
+        <li v-for="error in errors" :key="error">- {{ error }}</li>
+      </ul>
+    </template>
     <div class="input-field">
       <label for="description">Description</label>
       <input type="text"
@@ -14,7 +19,7 @@
       <label for="amount">Amount</label>
       <div>
         <span class="currency">$</span>
-        <input type="text"
+        <input type="number"
                id="amount"
                name="transaction_amount"
                v-model="form.amount"
@@ -36,18 +41,38 @@ export default {
       form: {
         description: '',
         amount: '',
-      }
+      },
+      errors: [],
     }
   },
 
   methods: {
     addTransaction: function () {
+      if (!this.validForm()) {
+        return;
+      }
+
       this.$store.dispatch('addTransaction', this.form);
+      this.$router.push({path: '/'});
+
       this.clearFields();
     },
     clearFields: function () {
       this.form.description = '';
       this.form.amount = '';
+    },
+    validForm: function () {
+      this.errors = [];
+
+      if (!this.form.description) {
+        this.errors.push('Description is required');
+      }
+
+      if (!this.form.amount) {
+        this.errors.push('Amount is required');
+      }
+
+      return (!this.errors.length);
     }
   },
   computed: mapState({
@@ -56,6 +81,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.wrapper {
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 425px;
+}
 
+.errors-list {
+  margin: 20px auto;
+  padding: 0;
+
+  li {
+    list-style: none;
+    color: $pink;
+  }
+}
 </style>

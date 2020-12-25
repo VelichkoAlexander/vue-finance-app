@@ -1,6 +1,6 @@
 <template>
   <div class="add-transaction">
-    <h1>Add Transaction</h1>
+    <h1 class="text-center">Add Transaction</h1>
     <div class="add-transaction__toggle">
       <TypeToggle></TypeToggle>
       <AddTransaction></AddTransaction>
@@ -19,3 +19,4 @@ export default {
   }
 };
 </script>
+
