@@ -24,6 +24,7 @@ const store = new Vuex.Store({
                 ...transaction,
                 type: state.isTypeCredit ? 'credit' : 'debit',
             }),
+        removeTransaction: (state, transactionIndex) => state.transactions.splice(transactionIndex, 1),
     },
     actions: {
         toggleTypeOfTransaction({commit}) {
@@ -31,6 +32,9 @@ const store = new Vuex.Store({
         },
         addTransaction({commit}, transaction) {
             commit('addTransaction', transaction);
+        },
+        removeTransaction({commit}, transactionIndex) {
+            commit('removeTransaction', transactionIndex);
         }
     },
 });
