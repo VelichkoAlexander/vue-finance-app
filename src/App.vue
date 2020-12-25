@@ -52,6 +52,12 @@ p {
   @include large-text-bold($purple);
 }
 
+.wrapper {
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 425px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -124,5 +130,13 @@ a {
   font-size: 16px;
   text-align: center;
   text-decoration: none;
+}
+
+.red {
+  color: $pink
+}
+
+.green {
+  color: $dark-green;
 }
 </style>

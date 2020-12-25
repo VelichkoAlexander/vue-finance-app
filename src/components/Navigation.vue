@@ -27,6 +27,7 @@ export default {
   box-sizing: border-box;
   width: 100%;
   padding: 15px 15%;
+  margin-bottom: 30px;
 
   a {
     font-weight: bold;

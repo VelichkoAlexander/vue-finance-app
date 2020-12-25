@@ -36,7 +36,7 @@ export default {
   border-radius: 10px;
   width: 175px;
   box-sizing: border-box;
-  margin: 50px auto;
+  margin: 10px auto;
   display: flex;
   background: linear-gradient(346.78deg, #f7fcfc 0%, #fafcfa 100%);
   border: 1px solid rgba(0, 0, 0, 0.04);

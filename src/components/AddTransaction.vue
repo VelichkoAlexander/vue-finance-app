@@ -52,6 +52,8 @@ export default {
         return;
       }
 
+      this.form.amount *= 100;
+
       this.$store.dispatch('addTransaction', this.form);
       this.$router.push({path: '/'});
 
@@ -82,12 +84,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.wrapper {
-  margin: 0 auto;
-  padding: 0 15px;
-  width: 425px;
-}
-
 .errors-list {
   margin: 20px auto;
   padding: 0;
