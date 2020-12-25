@@ -2,12 +2,14 @@
 
   <div id="app">
     <navigation></navigation>
+    <BalanceBar></BalanceBar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Navigation from '@/components/Navigation';
+import BalanceBar from '@/components/BalanceBar'
 import {store} from './store/index';
 import {router} from '@/router';
 
@@ -16,7 +18,8 @@ export default {
   router,
   store,
   components: {
-    Navigation
+    Navigation,
+    BalanceBar
   }
 }
 </script>

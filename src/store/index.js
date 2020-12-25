@@ -13,6 +13,9 @@ const store = new Vuex.Store({
     },
     getters: {
         getTransactions: (state) => state.transactions,
+        getTotal: (state) => state.transactions.reduce((acc, current) => {
+            return acc + current.amount;
+        }, 0),
     },
     mutations: {
         toggleTypeOfTransaction: (state) => state.isTypeCredit = !state.isTypeCredit,

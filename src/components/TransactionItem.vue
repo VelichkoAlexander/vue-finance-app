@@ -5,7 +5,7 @@
       <MinusSign v-else :color="'#fff'" :bg-color="'#e1467c'"></MinusSign>
     </div>
     <div class="transition-item__desc">{{ transaction.description }}</div>
-    <div>{{ transaction.amount }}</div>
+    <div>{{ formatMoney(transaction.amount)}}</div>
   </article>
 </template>
 
@@ -30,7 +30,8 @@ export default {
 
 <style scoped lang="scss">
 .transition-item {
-  margin-bottom: 10px;
+  min-height: 60px;
+  font-size: 20px;
   display: grid;
   grid-template-columns:  50px repeat(2, 1fr);
   grid-gap: 5px;
